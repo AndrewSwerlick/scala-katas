@@ -6,7 +6,7 @@
 $ cd l1
 $ chmod u+x sbt
 $ ./sbt
-> +run
+> +test
 ```
 
 ## Contact ##
