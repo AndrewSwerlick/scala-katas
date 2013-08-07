@@ -6,7 +6,10 @@ import swerlick.andrew.kata.life.l1._
 class RulesEngineSpec extends Specification with matcher.DataTables{def is =s2"""
 	Given the following scenarios of cells in a set
 		When we call nextState on the RulesEngine 
-		it should appropriately calculate the next state $nextStateTable
+			it should appropriately calculate the next state = $nextStateTable
+	Given the following scenarios of cells in a set
+		When we call getActiveGameSet
+			it should return all the cells that could potentially change state next turn = $activeGameSet
 		"""
 	var engine = new RulesEngine();
 
@@ -27,4 +30,10 @@ class RulesEngineSpec extends Specification with matcher.DataTables{def is =s2""
 		(cellToCheck, currentGameCells, nextState) 
 			=> engine.nextState(cellToCheck,currentGameCells) must beEqualTo(nextState)                  
 	}
+
+	def activeGameSet = 
+		"gameCells" 		| "activeSet" 	|
+		Set((1,1),(5,5))	! ((0,0),(6,6))	|>{
+			(gameCells,activeSet)=> engine.getActiveGameSet(gameCells) must beEqualTo(activeSet)
+		}
 }
