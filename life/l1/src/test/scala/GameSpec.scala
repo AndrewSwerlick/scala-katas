@@ -4,7 +4,7 @@ import org.specs2._
 import swerlick.andrew.kata.life.l1._
 
 class GameSpec extends Specification{def is = s2"""
-	Given a ruls engine class it should be possible to 
+	Given a rules engine class it should be possible to 
 		initialize a game with a series of cells = $initialize
 		retrieve starting cells from a new game  = $getCells
 		"""
